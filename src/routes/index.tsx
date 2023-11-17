@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { Login } from "../pages";
+import { Login, StudentMain } from "../pages";
 import PrivateRoutes from "./PrivatesRoutes";
 const index = () => {
   return (
     <Routes>
-      <Route element={<PrivateRoutes />}>{/* Routes */}</Route>
+      <Route element={<PrivateRoutes />}>
+        <Route element={<StudentMain />} path="/main" />
+      </Route>
       <Route element={<Login />} path="/" />
     </Routes>
   );

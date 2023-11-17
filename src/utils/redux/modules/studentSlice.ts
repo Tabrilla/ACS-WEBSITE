@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface StudentState {
   firstName: string;
   lastName: string;
-  studentId: string;
+  studentID: string;
   course: string;
   year: string;
   roomNo: string;
@@ -12,7 +12,7 @@ interface StudentState {
 const initialState: StudentState = {
   firstName: "",
   lastName: "",
-  studentId: "",
+  studentID: "",
   course: "",
   year: "",
   roomNo: "",

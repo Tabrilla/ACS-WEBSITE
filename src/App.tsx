@@ -1,10 +1,6 @@
-import { Login } from "./pages"
-
+import MainRoutes from "./routes/index";
 function App() {
-
-  return (
-    <Login/>
-  )
+  return <MainRoutes />;
 }
 
-export default App
+export default App;

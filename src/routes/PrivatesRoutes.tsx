@@ -1,8 +1,8 @@
 import { Outlet, Navigate } from "react-router-dom";
 
 const PrivateRoutes = () => {
-  const voterDataJson = localStorage.getItem("voterData");
-  const voterData = voterDataJson ? JSON.parse(voterDataJson) : null;
+  const studentDataJason = localStorage.getItem("studentData");
+  const voterData = studentDataJason ? JSON.parse(studentDataJason) : null;
 
   return voterData ? <Outlet /> : <Navigate to="/" />;
 };

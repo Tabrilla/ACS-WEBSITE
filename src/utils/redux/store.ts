@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import studentSlice from "./modules/studentSlice";
+import NavbarSlice from "./modules/NavbarSlice";
 import {
   persistReducer,
   FLUSH,
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   student: studentSlice,
+  navbar: NavbarSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

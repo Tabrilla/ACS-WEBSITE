@@ -47,7 +47,7 @@ const Login = () => {
           })
         );
         localStorage.setItem("studentData", JSON.stringify(studentData));
-        navigate("/main");
+        navigate("/home");
         setIsLoading(false);
       } else setIsLoading(false);
       toast.error("Invalid Student ID or Password!", {

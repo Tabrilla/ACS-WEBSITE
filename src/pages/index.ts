@@ -1,3 +1,3 @@
 import Login from "./StudentLogin/Login";
-import StudentMain from "./Main/StudentMain";
-export { Login, StudentMain };
+import Home from "./Main/Home";
+export { Login, Home };

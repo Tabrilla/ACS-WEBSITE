@@ -14,10 +14,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { COLORS } from "../../constants/COLORS";
 import { useAppSelector } from "../../utils/redux/hooks";
-// import { useNavigate } from "react-router-dom";
 
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { useNavigate } from "react-router-dom";
+
+import HomeIcon from '@mui/icons-material/Home';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+// import { Tooltip } from "@material-tailwind/react";
+import Tooltip from "@mui/material/Tooltip";
 
 const drawerWidth = 240;
 
@@ -62,14 +65,14 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": {
       ...openedMixin(theme),
-      backgroundColor: COLORS.PrimaryBg, // Set the desired background color here
+      backgroundColor: COLORS.InsideStudentBg, // Set the desired background color here
     },
   }),
   ...(!open && {
     ...closedMixin(theme),
     "& .MuiDrawer-paper": {
       ...closedMixin(theme),
-      backgroundColor: COLORS.PrimaryBg, // Set the desired background color here
+      backgroundColor: COLORS.InsideStudentBg, // Set the desired background color here
     },
   }),
 }));
@@ -78,8 +81,8 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const theme = useTheme();
-
   const { isOpenRedux } = useAppSelector((state) => state.navbar);
+  const RollNavigate = useNavigate ();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -96,61 +99,74 @@ export default function MiniDrawer() {
             )}
           </IconButton>
         </DrawerHeader>
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: isOpenRedux ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: isOpenRedux ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText
-                  primary={text}
-                  sx={{ opacity: isOpenRedux ? 1 : 0 }}
-                />
-              </ListItemButton>
+
+        <List className="text-white">
+            <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/home")}}>
+              <Tooltip title="Home" placement="left">
+                  <ListItemButton
+                    sx={{ 
+                      minHeight: 48,
+                      justifyContent: isOpenRedux ? "initial" : "center",
+                      px: 2.5,
+                    }} 
+                  >
+                    
+                    <ListItemIcon 
+                      sx={{
+                        minWidth: 0,
+                        mr: isOpenRedux ? 3 : "auto",
+                        justifyContent: "center",
+                        color: "white"  
+                      }}
+                    >
+                    
+                        <HomeIcon/>
+                      
+                      
+                    </ListItemIcon>
+
+                    <ListItemText
+                      primary="Home"
+                      sx={{ opacity: isOpenRedux ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Tooltip> 
             </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: isOpenRedux ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: isOpenRedux ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText
-                  primary={text}
-                  sx={{ opacity: isOpenRedux ? 1 : 0 }}
-                />
-              </ListItemButton>
+            
+            <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/enrollment")}}>
+              <Tooltip title="Enrollment" placement="left">
+                  <ListItemButton
+                    sx={{ 
+                      minHeight: 48,
+                      justifyContent: isOpenRedux ? "initial" : "center",
+                      px: 2.5,
+                    }} 
+                  >
+                    
+                    <ListItemIcon 
+                      sx={{
+                        minWidth: 0,
+                        mr: isOpenRedux ? 3 : "auto",
+                        justifyContent: "center",
+                        color: "white"  
+                      }}
+                    >
+                      <AssignmentIndIcon/>
+                    </ListItemIcon>
+
+                    <ListItemText
+                      primary="Enrollment"
+                      sx={{ opacity: isOpenRedux ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Tooltip>  
             </ListItem>
-          ))}
+          
         </List>
+
+        <Divider/>
+
+        
       </Drawer>
     </Box>
   );

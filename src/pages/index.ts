@@ -1,3 +1,4 @@
 import Login from "./StudentLogin/Login";
 import Home from "./Main/Home";
-export { Login, Home };
+import Enrollment from "./Main/Enrollment";
+export { Login, Home, Enrollment };

@@ -24,7 +24,7 @@ const Navbar = () => {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ bgcolor: COLORS.PrimaryBg }}>
+      <AppBar position="fixed" sx={{ bgcolor: COLORS.StudentBg }}>
         <Toolbar>
           <IconButton
             size="large"

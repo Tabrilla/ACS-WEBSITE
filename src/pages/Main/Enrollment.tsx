@@ -1,16 +1,13 @@
 import { DrawerAndNavLayout } from "../../layouts";
-// import { Chip } from "@material-tailwind/react";
 
-
-const Home = () => {
-  
+const Enrollment = () => {
   return (
     <section className="h-screen">
       <DrawerAndNavLayout>
-        <h1> HOME </h1>
+        <h1> ENROLLMENT </h1>
       </DrawerAndNavLayout>
     </section>
-  );
-};
+  )
+}
 
-export default Home;
+export default Enrollment

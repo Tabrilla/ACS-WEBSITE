@@ -6,9 +6,9 @@ export default withMT({
     extend: {
       colors: {
         PrimaryBg: COLORS.PrimaryBg,
-        // SecondaryBg: COLORS.SecondaryBg,
-        // yellowText: COLORS.Yellow,
-        // FontMainColor: COLORS.FontMainColor,
+        StudentBg: COLORS.StudentBg,
+        InsideStudentBg: COLORS.InsideStudentBg,
+        IconColor: COLORS.IconColor,
       },
     },
   },

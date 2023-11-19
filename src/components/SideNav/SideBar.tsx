@@ -12,13 +12,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { COLORS } from "../../constants/COLORS";
 import { useAppSelector } from "../../utils/redux/hooks";
 
 import { useNavigate } from "react-router-dom";
 
 import HomeIcon from '@mui/icons-material/Home';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import GradeIcon from '@mui/icons-material/Grade';
 // import { Tooltip } from "@material-tailwind/react";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -65,14 +65,14 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": {
       ...openedMixin(theme),
-      backgroundColor: COLORS.InsideStudentBg, // Set the desired background color here
+      
     },
   }),
   ...(!open && {
     ...closedMixin(theme),
     "& .MuiDrawer-paper": {
       ...closedMixin(theme),
-      backgroundColor: COLORS.InsideStudentBg, // Set the desired background color here
+      
     },
   }),
 }));
@@ -85,7 +85,7 @@ export default function MiniDrawer() {
   const RollNavigate = useNavigate ();
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}} >
       <CssBaseline />
 
       <Drawer variant="permanent" open={isOpenRedux}>
@@ -100,8 +100,9 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
 
-        <List className="text-white">
-            <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/home")}}>
+        <List className="text-black">
+
+            <ListItem className="mb-2" disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/home")}}>
               <Tooltip title="Home" placement="left">
                   <ListItemButton
                     sx={{ 
@@ -116,13 +117,9 @@ export default function MiniDrawer() {
                         minWidth: 0,
                         mr: isOpenRedux ? 3 : "auto",
                         justifyContent: "center",
-                        color: "white"  
                       }}
                     >
-                    
-                        <HomeIcon/>
-                      
-                      
+                      <HomeIcon/> 
                     </ListItemIcon>
 
                     <ListItemText
@@ -133,6 +130,7 @@ export default function MiniDrawer() {
                 </Tooltip> 
             </ListItem>
             
+            <h1 className="font-bold text-xs px-5"> INFORMATION </h1>
             <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/enrollment")}}>
               <Tooltip title="Enrollment" placement="left">
                   <ListItemButton
@@ -147,8 +145,7 @@ export default function MiniDrawer() {
                       sx={{
                         minWidth: 0,
                         mr: isOpenRedux ? 3 : "auto",
-                        justifyContent: "center",
-                        color: "white"  
+                        justifyContent: "center", 
                       }}
                     >
                       <AssignmentIndIcon/>
@@ -161,7 +158,35 @@ export default function MiniDrawer() {
                   </ListItemButton>
                 </Tooltip>  
             </ListItem>
-          
+
+            <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/grades")}}>
+              <Tooltip title="Student Checklist" placement="left">
+                  <ListItemButton
+                    sx={{ 
+                      minHeight: 48,
+                      justifyContent: isOpenRedux ? "initial" : "center",
+                      px: 2.5,
+                    }} 
+                  >
+                    
+                    <ListItemIcon 
+                      sx={{
+                        minWidth: 0,
+                        mr: isOpenRedux ? 3 : "auto",
+                        justifyContent: "center",
+                        
+                      }}
+                    >
+                      <GradeIcon/>
+                    </ListItemIcon>
+
+                    <ListItemText
+                      primary="Student Checklist"
+                      sx={{ opacity: isOpenRedux ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Tooltip>  
+            </ListItem>
         </List>
 
         <Divider/>

@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { checkStudentLogin } from "../../firebase/services";
 import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [studentID, setStudentID] = useState<number>();
   const [password, setPassword] = useState<number>();

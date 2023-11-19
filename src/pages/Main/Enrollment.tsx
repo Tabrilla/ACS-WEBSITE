@@ -1,5 +1,6 @@
 import { DrawerAndNavLayout } from "../../layouts";
 
+
 const Enrollment = () => {
   return (
     <section className="h-screen">

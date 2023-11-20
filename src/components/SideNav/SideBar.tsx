@@ -19,6 +19,8 @@ import { useNavigate } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import GradeIcon from '@mui/icons-material/Grade';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 // import { Tooltip } from "@material-tailwind/react";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -101,7 +103,6 @@ export default function MiniDrawer() {
         </DrawerHeader>
 
         <List className="text-black">
-
             <ListItem className="mb-2" disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/home")}}>
               <Tooltip title="Home" placement="left">
                   <ListItemButton
@@ -130,7 +131,12 @@ export default function MiniDrawer() {
                 </Tooltip> 
             </ListItem>
             
-            <h1 className="font-bold text-xs px-5"> INFORMATION </h1>
+            {isOpenRedux && (
+              <ListItem sx={{ display: "block" }}>
+                <h1 className="font-bold text-xs px-5"> INFORMATION </h1>
+              </ListItem>
+            )}
+            
             <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/enrollment")}}>
               <Tooltip title="Enrollment" placement="left">
                   <ListItemButton
@@ -187,9 +193,89 @@ export default function MiniDrawer() {
                   </ListItemButton>
                 </Tooltip>  
             </ListItem>
-        </List>
+            
+            <ListItem  disablePadding sx={{ display: "block" }} onClick={() => {RollNavigate("/sched")}}>
+              <Tooltip title="Schedule" placement="left">
+                  <ListItemButton
+                    sx={{ 
+                      minHeight: 48,
+                      justifyContent: isOpenRedux ? "initial" : "center",
+                      px: 2.5,
+                    }} 
+                  >
+                    
+                    <ListItemIcon 
+                      sx={{
+                        minWidth: 0,
+                        mr: isOpenRedux ? 3 : "auto",
+                        justifyContent: "center",
+                        
+                      }}
+                    >
+                      <CalendarMonthIcon/>
+                    </ListItemIcon>
 
+                    <ListItemText
+                      primary="Schedule"
+                      sx={{ opacity: isOpenRedux ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Tooltip>  
+            </ListItem>
+        </List>
+        
         <Divider/>
+
+        <List className="text-black">
+          
+          {isOpenRedux && (
+            <ListItem sx={{ display: "block" }}>
+              <h1 className="font-bold text-xs px-5"> OTHERS </h1>
+            </ListItem>
+          )}
+
+          {/* HISTORY & VISION & MISSION */}
+          <ListItem className="mb-2" disablePadding sx={{ display: "block" }}>
+            <Tooltip title="History, Mission & Vision" placement="left">
+              <ListItemButton
+                component="a" // Use an anchor tag
+                href="https://www.sti.edu/about.asp" // Specify the link
+                target="_blank" // Optional: open in a new tab
+                rel="noopener noreferrer" // Recommended for security when using target="_blank"
+                sx={{
+                  minHeight: 48,
+                  justifyContent: isOpenRedux ? "initial" : "center",
+                  px: 2.5,
+                  textDecoration: 'none', // Remove underline for anchor tag
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: isOpenRedux ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  <HandshakeIcon />
+                </ListItemIcon>
+
+                <ListItemText
+                  primaryTypographyProps={{ variant: "body1", fontSize: 13.5 }} // Adjust font size
+                  primary="History, Mission & Vision"
+                  sx={{ opacity: isOpenRedux ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Tooltip>
+          </ListItem>
+
+          {/* ABOUT  */}
+           
+       
+
+
+
+
+        </List>
 
         
       </Drawer>
